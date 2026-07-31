@@ -1,0 +1,6 @@
+{
+  "name": "AIVA",
+  "description": "AIVA - Royal AI Sales Force Workflow, Intelligent Calling Command Center & Speech-to-Speech Admin Assistant.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
