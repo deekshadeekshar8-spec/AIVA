@@ -2,12 +2,15 @@
 // Only calls from today, and only from the 5 mapped AIVA agents, are considered —
 // per explicit scope agreed with the user (this account has 15k+ historical records).
 
+// Vistara added 2026-08-27 for RK Developers — see server/callPoller.js for
+// the full rationale (confirmed used only through AIVA, never independently).
 const AGENT_NAME_TO_ID = [
   { match: 'kavya', agentId: 'agent_1' },
   { match: 'arjun', agentId: 'agent_2' },
   { match: 'ananya', agentId: 'agent_3' },
   { match: 'rohan', agentId: 'agent_4' },
   { match: 'priya', agentId: 'agent_5' },
+  { match: 'vistara', agentId: 'agent_6' },
 ];
 
 function resolveAgentIdFromBotName(botName) {

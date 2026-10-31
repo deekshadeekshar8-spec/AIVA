@@ -10,8 +10,11 @@ import { pollOmnidimCallsOnce } from './callPoller.js';
 
 // maxInstances caps runaway cost if this ever gets hammered; memory/timeout are
 // generous enough for a Gemini TTS call or an Omnidimension call-log page fetch.
+// timeoutSeconds is 300 (not the default 60) because POST /api/campaigns/:id/launch
+// dispatches real calls to every lead in a campaign SEQUENTIALLY (see server/app.js)
+// — up to MAX_CAMPAIGN_SIZE leads, each an external Omnidimension API round-trip.
 export const api = onRequest(
-  { region: 'us-central1', memory: '512MiB', timeoutSeconds: 60, maxInstances: 10 },
+  { region: 'us-central1', memory: '512MiB', timeoutSeconds: 300, maxInstances: 10 },
   app
 );
 

@@ -1,0 +1,19 @@
+rules_version = '2';
+
+// AIVA stores real customer PII: names, phone numbers, call transcripts and
+// recordings. NOTHING should ever reach it from a browser.
+//
+// All legitimate access goes through the Cloud Function (`api`), which runs with
+// the Admin SDK and therefore bypasses these rules entirely, behind HTTP Basic
+// auth (see server/app.js). The frontend only ever talks to /api/**.
+//
+// So the correct rule is a total deny. This file exists so that posture is
+// version-controlled and reviewable rather than living only in the console —
+// where it could be widened by a stray click with no audit trail.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

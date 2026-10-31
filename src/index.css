@@ -1,214 +1,116 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
-@import "tailwindcss";
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
 
-@theme {
-  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-}
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-/* Iceglass Theme Global Styles */
-.iceglass {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%), rgba(9, 18, 38, 0.45);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 
-    inset 0 1px 1px rgba(255, 255, 255, 0.25), 
-    inset 0 -1px 1px rgba(0, 0, 0, 0.45),
-    0 12px 32px -4px rgba(0, 0, 0, 0.55),
-    0 2px 4px -1px rgba(0, 0, 0, 0.4);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-}
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
 
-.iceglass-bright {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(14, 26, 54, 0.55);
-  backdrop-filter: blur(28px) saturate(200%);
-  -webkit-backdrop-filter: blur(28px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 
-    inset 0 1.5px 1.5px rgba(255, 255, 255, 0.3), 
-    inset 0 -1.5px 1.5px rgba(0, 0, 0, 0.5),
-    0 16px 48px 0 rgba(0, 0, 0, 0.65);
+:root {
+  --aiva-void: #04060d;
+  --aiva-deep: #070b16;
+  --aiva-panel: rgba(16, 22, 38, 0.72);
+  --aiva-line: rgba(122, 154, 208, 0.14);
+  --accent: #22d3ee;
 }
-
-.iceglass-cyan {
-  background: linear-gradient(135deg, rgba(34, 211, 238, 0.14) 0%, rgba(34, 211, 238, 0.02) 100%), rgba(6, 182, 212, 0.06);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(34, 211, 238, 0.25);
-  box-shadow: 
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.2),
-    0 12px 32px 0 rgba(6, 182, 212, 0.15);
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
 }
-
-.iceglass-indigo {
-  background: linear-gradient(135deg, rgba(129, 140, 248, 0.14) 0%, rgba(129, 140, 248, 0.02) 100%), rgba(99, 102, 241, 0.06);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(129, 140, 248, 0.25);
-  box-shadow: 
-    inset 0 1px 1.5px rgba(255, 255, 255, 0.2),
-    0 12px 32px 0 rgba(99, 102, 241, 0.15);
+body {
+  background-color: var(--aiva-void);
+  color: #e6edf9;
+  font-family: 'Inter Tight', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-
-.iceglass-input {
-  background: rgba(8, 15, 32, 0.5);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #f8fafc;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+::selection {
+  background: rgba(34, 211, 238, 0.28);
 }
-.iceglass-input:focus {
-  border-color: rgba(34, 211, 238, 0.45);
-  background: rgba(8, 15, 32, 0.7);
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.35),
-    0 0 16px rgba(6, 182, 212, 0.25);
-  outline: none;
+/* Glass surfaces -------------------------------------------------------- */
+.glass {
+  background:
+    linear-gradient(180deg, rgba(24, 33, 54, 0.78) 0%, rgba(10, 15, 27, 0.86) 100%);
+  border: 1px solid var(--aiva-line);
+  backdrop-filter: blur(18px);
 }
-
-.iceglass-button {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    0 4px 12px rgba(0, 0, 0, 0.25);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Dedicated premium-glass surface (login card) — kept separate from .glass
+   above since that shared class is used across every panel in the app. */
+.glass-premium {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
 }
-.iceglass-button:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
-  border-color: rgba(255, 255, 255, 0.28);
-  transform: translateY(-1.5px);
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.25),
-    0 8px 20px rgba(0, 0, 0, 0.35);
+.glass-soft {
+  background: rgba(12, 18, 32, 0.6);
+  border: 1px solid rgba(122, 154, 208, 0.1);
+  backdrop-filter: blur(14px);
 }
-.iceglass-button:active {
-  transform: translateY(0);
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 2px 6px rgba(0, 0, 0, 0.2);
+.hairline {
+  border-color: var(--aiva-line);
 }
-
-.iceglass-button-active {
-  background: rgba(6, 182, 212, 0.15);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(34, 211, 238, 0.35);
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 0 16px rgba(6, 182, 212, 0.2);
+/* Scrollbars ------------------------------------------------------------ */
+.thin-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-
-/* Custom Orbital Animations */
-@keyframes spin-reverse {
-  from {
-    transform: rotate(360deg);
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: rgba(122, 154, 208, 0.22);
+  border-radius: 999px;
+}
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* Ambient motion -------------------------------------------------------- */
+@keyframes aiva-breathe {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -0.6%, 0) scale(1.006); }
+}
+.animate-breathe {
+  animation: aiva-breathe 5.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+@keyframes aiva-sway {
+  0%, 100% { transform: rotate(-0.35deg) translate3d(-0.3%, 0, 0); }
+  50% { transform: rotate(0.35deg) translate3d(0.3%, 0, 0); }
+}
+.animate-sway {
+  animation: aiva-sway 7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+@keyframes aiva-pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.55; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+.animate-pulse-ring {
+  animation: aiva-pulse-ring 2.6s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+}
+@keyframes aiva-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(400%); }
+}
+.animate-scan {
+  animation: aiva-scan 4.5s linear infinite;
+}
+@keyframes aiva-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
+}
+.animate-drift {
+  animation: aiva-drift 9s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-breathe,
+  .animate-sway,
+  .animate-pulse-ring,
+  .animate-scan,
+  .animate-drift {
+    animation: none !important;
   }
-  to {
-    transform: rotate(0deg);
-  }
 }
-
-.animate-reverse-spin {
-  animation: spin-reverse 15s linear infinite;
-}
-
-/* ============================================================ */
-/*  LIGHT GLASSMORPHIC DESIGN SYSTEM — new premium AIVA surfaces  */
-/* ============================================================ */
-.glass-panel {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.65) 100%);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow:
-    0 1px 1px rgba(255, 255, 255, 0.9) inset,
-    0 20px 50px -12px rgba(79, 70, 229, 0.14),
-    0 4px 12px -2px rgba(15, 23, 42, 0.06);
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 8px 24px -8px rgba(79, 70, 229, 0.12), 0 1px 2px rgba(15, 23, 42, 0.04);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.glass-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 20px 40px -12px rgba(79, 70, 229, 0.22), 0 4px 10px rgba(15, 23, 42, 0.06);
-}
-
-@keyframes blob-float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(3%, -4%) scale(1.06); }
-  66% { transform: translate(-3%, 3%) scale(0.96); }
-}
-.blob-float { animation: blob-float 14s ease-in-out infinite; }
-.blob-float-slow { animation: blob-float 22s ease-in-out infinite reverse; }
-
-@keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.35); }
-  70% { box-shadow: 0 0 0 14px rgba(99, 102, 241, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
-}
-.pulse-ring { animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-
-@keyframes voice-bar {
-  0%, 100% { transform: scaleY(0.3); }
-  50% { transform: scaleY(1); }
-}
-.voice-bar { animation: voice-bar 1s ease-in-out infinite; transform-origin: center; }
-
-@keyframes neural-flow {
-  0% { stroke-dashoffset: 24; }
-  100% { stroke-dashoffset: 0; }
-}
-.neural-flow { stroke-dasharray: 4 4; animation: neural-flow 1s linear infinite; }
-
-@keyframes shimmer-sweep {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
-}
-.shimmer-sweep::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.5) 50%, transparent 70%);
-  animation: shimmer-sweep 3.5s ease-in-out infinite;
-}
-
-.text-gradient-aiva {
-  background: linear-gradient(90deg, #4f46e5, #06b6d4, #a855f7);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradient-pan 6s ease infinite;
-}
-@keyframes gradient-pan {
-  0%, 100% { background-position: 0% center; }
-  50% { background-position: 100% center; }
-}
-
-/* Custom Scrollbars */
-.scrollbar-thin::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-}
-.scrollbar-thin::-webkit-scrollbar-track {
-  background: rgba(10, 20, 42, 0.2);
-  border-radius: 99px;
-}
-.scrollbar-thin::-webkit-scrollbar-thumb {
-  background: rgba(6, 182, 212, 0.25);
-  border-radius: 99px;
-}
-.scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: rgba(6, 182, 212, 0.45);
-}
-
-

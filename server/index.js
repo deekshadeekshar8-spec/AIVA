@@ -2,14 +2,15 @@
 // as a plain Node HTTP server, plus the autonomous follow-up scheduler (which only
 // makes sense as a long-lived process; the deployed Cloud Function does not run this —
 // see DEPLOY.md for the production equivalent using Cloud Scheduler).
-import app, { WHATSAPP_TOKEN, PHONE_NUMBER_ID } from './app.js';
+import app from './app.js';
+import { isWhatsAppConfigured } from './whatsappClient.js';
 import { startScheduler } from './scheduler.js';
 
 const PORT = process.env.WHATSAPP_SERVER_PORT || 8787;
 
 app.listen(PORT, () => {
   console.log(`[AIVA backend] listening on http://localhost:${PORT}`);
-  if (!WHATSAPP_TOKEN || !PHONE_NUMBER_ID) {
+  if (!isWhatsAppConfigured()) {
     console.log('[AIVA backend] WhatsApp NOT CONFIGURED — set WHATSAPP_TOKEN and WHATSAPP_PHONE_NUMBER_ID in .env.local');
   }
   if (!process.env.OMNIDIM_API_KEY) {
